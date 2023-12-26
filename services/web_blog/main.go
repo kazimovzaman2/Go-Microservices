@@ -1,15 +1,15 @@
 package main
 
 import (
-    "log"
+	"log"
 
-    "github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2"
 )
 
 func main() {
-    app := fiber.New()
-    app.Get("/hello", func(c *fiber.Ctx) error {
-        return c.SendString("Hello World")
-    })
-    log.Fatal(app.Listen(":3069"))
+	app := fiber.New()
+	app.Get("/hello", func(c *fiber.Ctx) error {
+		return c.SendString("Hello Universe")
+	})
+	log.Fatal(app.Listen(":3069"))
 }
