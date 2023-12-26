@@ -11,7 +11,8 @@ import (
 )
 
 type DBInstance struct {
-	Db *sql.DB
+	Db  *sql.DB
+	Orm orm.Ormer
 }
 
 var Database DBInstance
@@ -31,7 +32,9 @@ func ConnectDB() {
 		if err := orm.RunSyncdb("default", false, true); err != nil {
 			log.Fatal(err.Error())
 		} else {
-			Database = DBInstance{Db: db}
+			orm.Debug = true
+			o := orm.NewOrm()
+			Database = DBInstance{Db: db, Orm: o}
 			log.Print("Connected Succcessfully")
 		}
 	}
